@@ -5,7 +5,7 @@ unit uListaSimple;
 interface
 
 uses
-  SysUtils, Dialogs;
+  SysUtils, Dialogs, ulistadoble;
 
 type
   PUsuario = ^TUsuario;
@@ -17,6 +17,7 @@ type
     telefono: String;
     password: String;
     siguiente: PUsuario;
+    bandejaEntrada: PCorreo;
   end;
 
 var
@@ -41,6 +42,7 @@ begin
   nuevo^.telefono := telefono;
   nuevo^.password:= password;
   nuevo^.siguiente := nil;
+  nuevo^.bandejaEntrada := nil;
 
   if lista = nil then
     lista := nuevo

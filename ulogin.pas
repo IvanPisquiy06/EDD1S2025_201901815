@@ -5,7 +5,7 @@ unit ulogin;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple, ucrearusuario, umenu, urootmenu, ubandeja;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple, ucrearusuario, umenu, urootmenu;
 
 type
 
@@ -37,6 +37,9 @@ procedure TFormLogin.ButtonLoginClick(Sender: TObject);
 var
   usuario: PUsuario;
   emailIngresado, passwordIngresado: String;
+
+  FormularioMenu: TFormMenu;
+  FormularioRoot: TFormRoot;
 begin
   emailIngresado := Trim(EditEmail.Text);
   passwordIngresado := Trim(EditPassword.Text);
@@ -44,25 +47,30 @@ begin
   usuario:= IniciarSesion(listaUsuarios, emailIngresado, passwordIngresado);
   if usuario <> nil then
      begin
+          Self.Hide;
           if usuario^.usuario = 'root' then
           begin
-               FormMenu := TFormMenu.Create(Self);
+               FormularioRoot := TFormRoot.Create(Application);
                try
-                 FormRoot.ShowModal;
+                 FormularioRoot.ShowModal;
                finally
-                 FormRoot.Free;
+                 FormularioRoot.Free;
                end;
           end
           else
           begin
-            FormMenu := TFormMenu.Create(Self);
+            FormularioMenu := TFormMenu.Create(Application);
             try
-              FormMenu.ShowModal;
+              FormularioMenu.UsuarioActual := usuario;
+
+              FormularioMenu.ShowModal;
             finally
-              FormBandeja.Free;
+              FormularioMenu.Free;
             end;
           end;
-          ModalResult := mrOk;
+          Self.Show;
+          EditPassword.Clear;
+          EditPassword.SetFocus;
      end
   else
       begin

@@ -37,6 +37,26 @@ implementation
 
 { TFormBandeja }
 
+procedure TFormBandeja.CargarBandeja(u: PUsuario);
+var
+  aux: PCorreo;
+  noLeidos: Integer;
+begin
+     usuarioActual := u;
+     ListBoxCorreos.Clear;
+     noLeidos := 0;
+
+     aux := usuarioActual^.bandejaEntrada;
+     while aux <> nil do
+     begin
+       ListBoxCorreos.Items.Add('[' + aux^.estado + '] ' + aux^.asunto + ' - ' + aux^.remitente);
+       if aux^.estado = 'NL' then
+          Inc(noLeidos);
+       aux := aux^.siguiente;
+     end;
+     LabelNoLeidos.Caption := 'No leidos: ' + IntToStr(noLeidos);
+end;
+
 procedure TFormBandeja.ListBoxCorreosClick(Sender: TObject);
 var
   idx: Integer;

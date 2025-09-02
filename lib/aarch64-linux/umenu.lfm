@@ -21,6 +21,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Bandeja de Entrada'
     TabOrder = 0
+    OnClick = ButtonBandejaClick
   end
   object ButtonEnviar: TButton
     Left = 64

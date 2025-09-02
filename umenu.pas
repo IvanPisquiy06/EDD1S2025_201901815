@@ -26,6 +26,7 @@ type
   private
 
   public
+  UsuarioActual: PUsuario;
 
   end;
 
@@ -37,12 +38,17 @@ implementation
 {$R *.lfm}
 
 procedure TFormMenu.ButtonBandejaClick(Sender: TObject);
-var
-  usuario : PUsuario;
 begin
+
+  if UsuarioActual = nil then
+  begin
+    ShowMessage('Error fatal: No se pudo identificar al usuario actual.');
+    Exit;
+  end;
+
   FormBandeja := TFormBandeja.Create(Self);
   try
-    FormBandeja.CargarBandeja(usuario);
+    FormBandeja.CargarBandeja(UsuarioActual);
     FormBandeja.ShowModal;
   finally
     FormBandeja.Free;

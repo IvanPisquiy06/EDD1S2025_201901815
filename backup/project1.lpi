@@ -69,6 +69,18 @@
         <ComponentName Value="FormMenu"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
+      <Unit>
+        <Filename Value="ubandeja.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormBandeja"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="urootmenu.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormRoot"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -5,7 +5,7 @@ unit umenu;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ubandeja;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ubandeja, ulistasimple;
 
 type
 

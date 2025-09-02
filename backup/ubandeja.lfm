@@ -1,8 +1,59 @@
-object Form2: TForm2
+object FormBandeja: TFormBandeja
   Left = -3
-  Height = 240
+  Height = 503
   Top = -30
-  Width = 320
-  Caption = 'Form2'
+  Width = 535
+  Caption = 'FormBandeja'
+  ClientHeight = 503
+  ClientWidth = 535
   LCLVersion = '3.8.0.0'
+  object Label1: TLabel
+    Left = 204
+    Height = 19
+    Top = 25
+    Width = 131
+    Caption = 'Bandeja de Entrada'
+  end
+  object ListBoxCorreos: TListBox
+    Left = 24
+    Height = 200
+    Top = 88
+    Width = 484
+    ItemHeight = 0
+    TabOrder = 0
+  end
+  object ButtonOrdenar: TButton
+    Left = 24
+    Height = 25
+    Top = 56
+    Width = 51
+    Caption = 'A-Z'
+    TabOrder = 1
+  end
+  object LabelNoLeidos: TLabel
+    Left = 463
+    Height = 20
+    Top = 56
+    Width = 9
+    AutoSize = False
+    Caption = '0'
+  end
+  object MemoMensaje: TMemo
+    Left = 104
+    Height = 128
+    Top = 304
+    Width = 310
+    Lines.Strings = (
+      'MemoMensaje'
+    )
+    TabOrder = 2
+  end
+  object ButtonEliminar: TButton
+    Left = 56
+    Height = 25
+    Top = 448
+    Width = 75
+    Caption = 'Eliminar'
+    TabOrder = 3
+  end
 end

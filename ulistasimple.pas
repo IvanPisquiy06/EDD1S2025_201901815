@@ -41,7 +41,9 @@ begin
   nuevo^.email := email;
   nuevo^.telefono := telefono;
   nuevo^.password:= password;
-  nuevo^.siguiente := nil;
+  nuevo^.siguiente := PUsuario;
+  nuevo^.bandejaEntrada := PCorreo;
+  contactos: PUsuario;
 
   if lista = nil then
     lista := nuevo
@@ -104,6 +106,19 @@ begin
   end;
   Result := False;
 end;
+
+function BuscarUsuarioEmail(lista: PUsuario; email: String): PUsuario;
+var
+  aux: PUsuario;
+begin
+  if aux^.email = email then
+  begin
+    Result := aux;
+    Exit;
+  end;
+  aux := aux^.siguiente;
+end;
+Result := nil;
 
 end.
 

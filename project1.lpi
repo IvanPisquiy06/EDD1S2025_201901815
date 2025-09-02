@@ -67,12 +67,14 @@
         <Filename Value="umenu.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormMenu"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="ubandeja.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormBandeja"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -88,6 +90,12 @@
       <Unit>
         <Filename Value="prueba.json"/>
         <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uenviar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form2"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>
   </ProjectOptions>

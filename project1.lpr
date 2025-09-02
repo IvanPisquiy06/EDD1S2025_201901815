@@ -11,7 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uprincipal, ulistasimple, ulogin, ucrearusuario, ulistadoble, umenu,
-  ubandeja, urootmenu
+  ubandeja, urootmenu, uenviar
   { you can add units after this };
 
 {$R *.res}
@@ -25,6 +25,7 @@ begin
   Application.CreateForm(TFormMenu, FormMenu);
   Application.CreateForm(TFormBandeja, FormBandeja);
   Application.CreateForm(TFormRoot, FormRoot);
+  Application.CreateForm(TForm2, Form2);
   Application.Run;
 end.
 

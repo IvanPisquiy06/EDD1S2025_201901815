@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="6"/>
         <CursorPos X="11" Y="19"/>
-        <UsageCount Value="70"/>
+        <UsageCount Value="71"/>
       </Unit>
       <Unit>
         <Filename Value="uprincipal.pas"/>
@@ -18,19 +18,18 @@
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="31"/>
         <CursorPos X="59" Y="38"/>
-        <UsageCount Value="70"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="71"/>
       </Unit>
       <Unit>
         <Filename Value="ulistasimple.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uListaSimple"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="29"/>
-        <CursorPos X="31" Y="45"/>
-        <UsageCount Value="70"/>
+        <TopLine Value="104"/>
+        <CursorPos X="15" Y="121"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -39,12 +38,10 @@
         <ComponentName Value="FormLogin"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="75"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="24"/>
         <CursorPos X="55" Y="64"/>
-        <UsageCount Value="70"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="71"/>
       </Unit>
       <Unit>
         <Filename Value="ucrearusuario.pas"/>
@@ -52,10 +49,10 @@
         <ComponentName Value="FormCrear"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="40"/>
-        <CursorPos Y="60"/>
-        <UsageCount Value="70"/>
+        <CursorPos X="73" Y="45"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -68,10 +65,10 @@
       <Unit>
         <Filename Value="ulistadoble.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="4"/>
         <CursorPos X="33" Y="48"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -83,18 +80,18 @@
         <EditorIndex Value="2"/>
         <TopLine Value="32"/>
         <CursorPos X="44" Y="51"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="ubandeja.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormBandeja"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="7"/>
-        <CursorPos X="55" Y="62"/>
-        <UsageCount Value="59"/>
+        <EditorIndex Value="5"/>
+        <CursorPos X="63" Y="15"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -102,11 +99,10 @@
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormRoot"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="57"/>
         <CursorPos X="26" Y="62"/>
-        <UsageCount Value="59"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="60"/>
       </Unit>
       <Unit>
         <Filename Value="token.txt"/>
@@ -124,12 +120,19 @@
         <UsageCount Value="25"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
+      <Unit>
+        <Filename Value="uenviar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form2"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="24" Y="4"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="62" Column="26" TopLine="50"/>
-      </Position>
+    <JumpHistory HistoryIndex="11">
       <Position>
         <Filename Value="ucrearusuario.pas"/>
         <Caret Line="43" Column="23" TopLine="28"/>
@@ -145,38 +148,6 @@
       <Position>
         <Filename Value="ubandeja.pas"/>
         <Caret TopLine="7"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="4" Column="7"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="11" Column="48"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="27" Column="34" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="28" Column="34" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="27" Column="34" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="28" Column="34" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="27" Column="34" TopLine="12"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="9" Column="55" TopLine="56"/>
       </Position>
       <Position>
         <Filename Value="ubandeja.pas"/>
@@ -195,48 +166,12 @@
         <Caret Line="41" Column="33" TopLine="33"/>
       </Position>
       <Position>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="8" Column="123"/>
-      </Position>
-      <Position>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="58" Column="28" TopLine="48"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="49" Column="27"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="63" Column="39" TopLine="54"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="64" Column="9" TopLine="54"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="49" Column="27" TopLine="40"/>
-      </Position>
-      <Position>
         <Filename Value="ucrearusuario.pas"/>
         <Caret Line="35" Column="61" TopLine="28"/>
       </Position>
       <Position>
         <Filename Value="ulistasimple.pas"/>
         <Caret Line="9" Column="26"/>
-      </Position>
-      <Position>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="79" Column="57" TopLine="67"/>
-      </Position>
-      <Position>
-        <Filename Value="urootmenu.pas"/>
-        <Caret Line="37" Column="50" TopLine="32"/>
-      </Position>
-      <Position>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="71" Column="33" TopLine="62"/>
       </Position>
       <Position>
         <Filename Value="umenu.pas"/>

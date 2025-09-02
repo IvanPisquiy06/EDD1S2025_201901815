@@ -39,8 +39,10 @@
         <ComponentName Value="FormLogin"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <CursorPos X="113" Y="8"/>
+        <TopLine Value="75"/>
+        <CursorPos X="55" Y="64"/>
         <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit>
@@ -78,10 +80,9 @@
         <ComponentName Value="FormMenu"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="33"/>
-        <CursorPos X="14" Y="41"/>
+        <TopLine Value="32"/>
+        <CursorPos X="44" Y="51"/>
         <UsageCount Value="63"/>
         <Loaded Value="True"/>
       </Unit>
@@ -112,7 +113,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="41"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
         <DefaultSyntaxHighlighter Value="Text"/>
       </Unit>
       <Unit>
@@ -120,19 +121,11 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="84"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="25"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="ucrearusuario.pas"/>
-        <Caret Line="8" Column="80"/>
-      </Position>
-      <Position>
-        <Filename Value="uprincipal.pas"/>
-        <Caret Line="42" Column="34" TopLine="31"/>
-      </Position>
       <Position>
         <Filename Value="ulogin.pas"/>
         <Caret Line="62" Column="26" TopLine="50"/>
@@ -244,6 +237,14 @@
       <Position>
         <Filename Value="ulogin.pas"/>
         <Caret Line="71" Column="33" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="umenu.pas"/>
+        <Caret Line="44" Column="66" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="umenu.pas"/>
+        <Caret Line="53" TopLine="33"/>
       </Position>
     </JumpHistory>
     <RunParams>

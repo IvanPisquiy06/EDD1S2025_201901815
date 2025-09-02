@@ -1,0 +1,28 @@
+object Form1: TForm1
+  Left = -3
+  Height = 304
+  Top = -30
+  Width = 490
+  Caption = 'Form1'
+  ClientHeight = 304
+  ClientWidth = 490
+  OnCreate = formCreate
+  LCLVersion = '3.8.0.0'
+  object Label1: TLabel
+    Left = 128
+    Height = 44
+    Top = 32
+    Width = 189
+    AutoSize = False
+    Caption = 'Label1'
+  end
+  object Button1: TButton
+    Left = 160
+    Height = 25
+    Top = 176
+    Width = 131
+    Caption = 'Agregar usuario'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+end

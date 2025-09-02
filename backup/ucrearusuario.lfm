@@ -1,0 +1,88 @@
+object FormCrear: TFormCrear
+  Left = -3
+  Height = 446
+  Top = -30
+  Width = 293
+  Caption = 'FormCrear'
+  ClientHeight = 446
+  ClientWidth = 293
+  LCLVersion = '3.8.0.0'
+  object EditNombre: TEdit
+    Left = 64
+    Height = 27
+    Top = 64
+    Width = 144
+    TabOrder = 0
+  end
+  object ButtonRegistrar: TButton
+    Left = 96
+    Height = 25
+    Top = 392
+    Width = 75
+    Caption = 'Crear'
+    TabOrder = 1
+  end
+  object EditUsuario: TEdit
+    Left = 64
+    Height = 27
+    Top = 128
+    Width = 144
+    TabOrder = 2
+  end
+  object EditEmail: TEdit
+    Left = 64
+    Height = 27
+    Top = 192
+    Width = 144
+    TabOrder = 3
+  end
+  object EditTelefono: TEdit
+    Left = 64
+    Height = 27
+    Top = 256
+    Width = 144
+    TabOrder = 4
+  end
+  object EditPassword: TEdit
+    Left = 64
+    Height = 27
+    Top = 320
+    Width = 144
+    TabOrder = 5
+  end
+  object Label1: TLabel
+    Left = 64
+    Height = 19
+    Top = 29
+    Width = 56
+    Caption = 'Nombre'
+  end
+  object Label2: TLabel
+    Left = 64
+    Height = 19
+    Top = 96
+    Width = 52
+    Caption = 'Usuario'
+  end
+  object Label3: TLabel
+    Left = 64
+    Height = 19
+    Top = 160
+    Width = 37
+    Caption = 'Email'
+  end
+  object Label4: TLabel
+    Left = 64
+    Height = 19
+    Top = 224
+    Width = 60
+    Caption = 'Telefono'
+  end
+  object Label5: TLabel
+    Left = 64
+    Height = 19
+    Top = 288
+    Width = 77
+    Caption = 'Contrasena'
+  end
+end

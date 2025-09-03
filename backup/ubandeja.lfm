@@ -31,10 +31,10 @@ object FormBandeja: TFormBandeja
     TabOrder = 1
   end
   object LabelNoLeidos: TLabel
-    Left = 463
+    Left = 348
     Height = 20
     Top = 56
-    Width = 9
+    Width = 160
     AutoSize = False
     Caption = '0'
   end

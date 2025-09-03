@@ -9,6 +9,14 @@ uses
 
 type
   PUsuario = ^TUsuario;
+  PContacto = ^TContacto;
+
+  TContacto = record
+    refUsuario: PUsuario;
+    siguiente: PContacto;
+    anterior: PContacto;
+  end;
+
   TUsuario = record
     id: Integer;
     nombre: String;
@@ -18,6 +26,7 @@ type
     password: String;
     siguiente: PUsuario;
     bandejaEntrada: PCorreo;
+    contactos: PContacto;
   end;
 
 var
@@ -25,8 +34,11 @@ var
 
 procedure InsertarUsuario(var lista: PUsuario; id: Integer; nombre, usuario, email, telefono, password: String);
 procedure MostrarUsuarios(lista: PUsuario);
+procedure AgregarContacto(var lista: PContacto; nuevoUsuario: PUsuario);
 function IniciarSesion(lista: PUsuario; email, password: String): PUsuario;
 function ExisteUsuario(lista: PUsuario; email, usuario: String): Boolean;
+function BuscarUsuarioEmail(lista: PUsuario; email: String): PUsuario;
+function EsContacto(usuario: PUsuario; email: String): Boolean;
 
 implementation
 
@@ -104,6 +116,64 @@ begin
     aux := aux^.siguiente;
   end;
   Result := False;
+end;
+
+function BuscarUsuarioEmail(lista: PUsuario; email: String): PUsuario;
+var
+  aux: PUsuario;
+begin
+  aux := lista;
+  while aux <> nil do
+  begin
+    if aux^.email = email then
+  begin
+    Result := aux;
+    Exit;
+  end;
+  aux := aux^.siguiente;
+end;
+Result := nil;
+end;
+
+procedure AgregarContacto(var lista: PContacto; nuevoUsuario: PUsuario);
+var
+  nuevo, aux: PContacto;
+begin
+     New(nuevo);
+     nuevo^.refUsuario := nuevoUsuario;
+
+     if lista = nil then
+     begin
+       lista := nuevo;
+       nuevo^.siguiente := nuevo;
+       nuevo^.anterior := nuevo;
+     end
+     else
+     begin
+          aux := lista^.anterior;
+          aux^.siguiente := nuevo;
+          nuevo^.anterior := aux;
+          nuevo^.siguiente := lista;
+          lista^.anterior := nuevo;
+     end;
+end;
+
+function EsContacto(usuario: PUsuario; email: String): Boolean;
+var
+  aux:PContacto;
+begin
+  Result := False;
+  if (usuario = nil) or (usuario^.contactos = nil) then Exit;
+
+  aux := usuario^.contactos;
+  repeat
+    if aux^.refUsuario^.email = email then
+    begin
+      Result := True;
+      Exit;
+    end;
+    aux := aux^.siguiente;
+  until aux = usuario^.contactos;
 end;
 
 end.

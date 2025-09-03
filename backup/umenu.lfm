@@ -21,6 +21,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Bandeja de Entrada'
     TabOrder = 0
+    OnClick = ButtonBandejaClick
   end
   object ButtonEnviar: TButton
     Left = 64
@@ -29,6 +30,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Enviar Correo'
     TabOrder = 1
+    OnClick = ButtonEnviarClick
   end
   object ButtonPapelera: TButton
     Left = 64
@@ -61,6 +63,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Agregar Contacto'
     TabOrder = 5
+    OnClick = ButtonAgregarClick
   end
   object ButtonContactos: TButton
     Left = 64
@@ -69,6 +72,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Contactos'
     TabOrder = 6
+    OnClick = ButtonContactosClick
   end
   object ButtonActualizar: TButton
     Left = 64

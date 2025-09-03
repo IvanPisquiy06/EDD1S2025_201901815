@@ -94,7 +94,30 @@
       <Unit>
         <Filename Value="uenviar.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form2"/>
+        <ComponentName Value="FormEnviar"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucontactos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormContactos"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uagregar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormAgregar"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="upila.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="upapelera.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormPapelera"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>

@@ -5,7 +5,8 @@ unit umenu;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ubandeja, ulistasimple;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera;
 
 type
 
@@ -22,10 +23,15 @@ type
     ButtonActualizar: TButton;
     ButtonReportes: TButton;
     Label1: TLabel;
-  procedure ButtonBandejaClick(Sender : TObject);
+  procedure ButtonBandejaClick(Sender: TObject);
+  procedure ButtonEnviarClick(Sender: TObject);
+  procedure ButtonContactosClick(Sender: TObject);
+  procedure ButtonAgregarClick(Sender: TObject);
+  procedure ButtonPapeleraClick(Sender: TObject);
   private
 
   public
+  UsuarioActual: PUsuario;
 
   end;
 
@@ -37,15 +43,72 @@ implementation
 {$R *.lfm}
 
 procedure TFormMenu.ButtonBandejaClick(Sender: TObject);
-var
-  usuario : PUsuario;
 begin
+
+  if UsuarioActual = nil then
+  begin
+    ShowMessage('Error fatal: No se pudo identificar al usuario actual.');
+    Exit;
+  end;
+
   FormBandeja := TFormBandeja.Create(Self);
   try
-    FormBandeja.CargarBandeja(usuario);
+    FormBandeja.CargarBandeja(UsuarioActual);
     FormBandeja.ShowModal;
   finally
     FormBandeja.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonEnviarClick(Sender: TObject);
+begin
+  FormEnviar := TFormEnviar.Create(Self);
+  try
+    FormEnviar.PrepararEnvio(UsuarioActual);
+    FormEnviar.ShowModal;
+  finally
+    FormEnviar.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonContactosClick(Sender: TObject);
+var
+  FormularioContactos: TFormContactos;
+begin
+  FormularioContactos := TFormContactos.Create(Self);
+  try
+    FormularioContactos.AbrirContactos(UsuarioActual);
+    FormularioContactos.ShowModal;
+  finally
+    FormularioContactos.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonAgregarClick(Sender: TObject);
+var
+  FormularioAgregar: TFormAgregar;
+begin
+  FormularioAgregar := TFormAgregar.Create(Application);
+  try
+    FormularioAgregar.SetUsuarioActual(Self.UsuarioActual);
+
+    FormularioAgregar.ShowModal;
+  finally
+    FormularioAgregar.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonPapeleraClick(Sender: TObject);
+var
+  FormularioPapelera: TFormPapelera;
+begin
+  FormularioPapelera := TFormPapelera.Create(Application);
+  try
+    FormularioPapelera.AbrirPapelera(UsuarioActual);
+    FormularioPapelera.ShowModal;
+
+  finally
+    FormularioPapelera.Free;
   end;
 end;
 

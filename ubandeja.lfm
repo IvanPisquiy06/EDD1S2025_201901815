@@ -21,6 +21,7 @@ object FormBandeja: TFormBandeja
     Width = 484
     ItemHeight = 0
     TabOrder = 0
+    OnClick = ListBoxCorreosClick
   end
   object ButtonOrdenar: TButton
     Left = 24
@@ -29,6 +30,7 @@ object FormBandeja: TFormBandeja
     Width = 51
     Caption = 'A-Z'
     TabOrder = 1
+    OnClick = ButtonOrdenarClick
   end
   object LabelNoLeidos: TLabel
     Left = 348
@@ -55,5 +57,6 @@ object FormBandeja: TFormBandeja
     Width = 75
     Caption = 'Eliminar'
     TabOrder = 3
+    OnClick = ButtonEliminarClick
   end
 end

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  ActnList, ulistadoble, ulistasimple;
+  ActnList, ulistadoble, ulistasimple, upila;
 
 type
 
@@ -90,9 +90,8 @@ end;
 
 procedure TFormBandeja.ButtonEliminarClick(Sender: TObject);
 var
-  idx: Integer;
+  idx, i: Integer;
   aux: PCorreo;
-  i: Integer;
 begin
      idx := ListBoxCorreos.ItemIndex;
      if idx < 0 then Exit;
@@ -107,6 +106,7 @@ begin
 
      if aux <> nil then
      begin
+       Push(usuarioActual^.pilaPapelera, aux);
        ShowMessage('Eliminando correo: ' + aux^.asunto);
      end;
 

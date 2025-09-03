@@ -1,0 +1,48 @@
+object FormPapelera: TFormPapelera
+  Left = -3
+  Height = 329
+  Top = -30
+  Width = 423
+  Caption = 'FormPapelera'
+  ClientHeight = 329
+  ClientWidth = 423
+  LCLVersion = '3.8.0.0'
+  object Label1: TLabel
+    Left = 176
+    Height = 19
+    Top = 8
+    Width = 60
+    Caption = 'Papelera'
+  end
+  object ButtonBuscar: TButton
+    Left = 32
+    Height = 25
+    Top = 40
+    Width = 75
+    Caption = 'Buscar'
+    TabOrder = 0
+  end
+  object ButtonEliminar: TButton
+    Left = 312
+    Height = 25
+    Top = 40
+    Width = 75
+    Caption = 'Eliminar'
+    TabOrder = 1
+  end
+  object ListBoxPapelera: TListBox
+    Left = 32
+    Height = 208
+    Top = 82
+    Width = 356
+    ItemHeight = 0
+    TabOrder = 2
+  end
+  object EditBuscar: TEdit
+    Left = 120
+    Height = 27
+    Top = 40
+    Width = 116
+    TabOrder = 3
+  end
+end

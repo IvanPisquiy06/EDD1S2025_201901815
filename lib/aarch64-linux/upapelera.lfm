@@ -21,6 +21,7 @@ object FormPapelera: TFormPapelera
     Width = 75
     Caption = 'Buscar'
     TabOrder = 0
+    OnClick = ButtonBuscarClick
   end
   object ButtonEliminar: TButton
     Left = 312
@@ -29,6 +30,7 @@ object FormPapelera: TFormPapelera
     Width = 75
     Caption = 'Eliminar'
     TabOrder = 1
+    OnClick = ButtonEliminarClick
   end
   object ListBoxPapelera: TListBox
     Left = 32

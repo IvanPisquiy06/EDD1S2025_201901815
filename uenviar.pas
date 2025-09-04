@@ -62,7 +62,7 @@ begin
   end;
 
   nuevoId := Random(10000);
-  InsertarCorreo(destinatario^.bandejaEntrada, nuevoId, usuarioActual^.email,
+  InsertarCorreo(destinatario^.bandejaEntrada, nuevoId, usuarioActual^.email, EditDestinatario.Text,
                                                'NL', EditAsunto.Text, DateTimeToStr(Now), MemoMensaje.Text, False);
 
   ShowMessage('Correo enviado a ' + destinatario^.nombre);

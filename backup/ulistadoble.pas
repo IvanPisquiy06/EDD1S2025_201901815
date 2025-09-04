@@ -12,6 +12,7 @@ type
   TCorreo = record
     id: Integer;
     remitente: String;
+    destinatario: String;
     estado: String;
     programado: Boolean;
     asunto: String;
@@ -55,7 +56,7 @@ end;
 
 procedure MostrarCorreos(lista: PCorreo);
 var
-   aux := PCorreo;
+   aux: PCorreo;
 begin
      aux := lista;
      while aux <> nil do

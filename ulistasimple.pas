@@ -5,7 +5,7 @@ unit uListaSimple;
 interface
 
 uses
-  SysUtils, Dialogs, ulistadoble, upila;
+  SysUtils, Dialogs, ulistadoble, upila, ucola;
 
 type
   PUsuario = ^TUsuario;
@@ -28,6 +28,8 @@ type
     bandejaEntrada: PCorreo;
     contactos: PContacto;
     pilaPapelera: PElementoPila;
+    colaProgramadosFrente: PElementoCola;
+    colaProgramadosFin: PElementoCola;
   end;
 
 var
@@ -57,6 +59,8 @@ begin
   nuevo^.siguiente := nil;
   nuevo^.bandejaEntrada := nil;
   nuevo^.pilaPapelera := nil;
+  nuevo^.colaProgramadosFrente := nil;
+  nuevo^.colaProgramadosFin := nil;
 
   if lista = nil then
     lista := nuevo

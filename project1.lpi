@@ -118,6 +118,31 @@
         <Filename Value="upapelera.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormPapelera"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucola.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uprogramar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormProgramar"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uprogramados.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormProgramados"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uactualizar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormActualizar"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>

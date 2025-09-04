@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera;
+  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera, uprogramar, uprogramados, uactualizar;
 
 type
 
@@ -28,6 +28,9 @@ type
   procedure ButtonContactosClick(Sender: TObject);
   procedure ButtonAgregarClick(Sender: TObject);
   procedure ButtonPapeleraClick(Sender: TObject);
+  procedure ButtonProgramarClick(Sender: TObject);
+  procedure ButtonProgramadosClick(Sender: TObject);
+  procedure ButtonActualizarClick(Sender: TObject);
   private
 
   public
@@ -109,6 +112,46 @@ begin
 
   finally
     FormularioPapelera.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonProgramarClick(Sender: TObject);
+var
+  FormularioProgramar: TFormProgramar;
+begin
+  FormularioProgramar := TFormProgramar.Create(Application);
+
+  try
+    FormularioProgramar.PrepararProgramacion(UsuarioActual);
+    FormularioProgramar.ShowModal;
+  finally
+    FormularioProgramar.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonProgramadosClick(Sender: TObject);
+var
+  FormularioProgramados: TFormProgramados;
+begin
+  FormularioProgramados := TFormProgramados.Create(Application);
+
+  try
+    FormularioProgramados.AbrirProgramados(UsuarioActual);
+    FormularioProgramados.ShowModal;
+  finally
+    FormularioProgramados.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonActualizarClick(Sender: TObject);
+var FormularioActualizar : TFormActualizar;
+begin
+  FormularioActualizar := TFormProgramados.Create(Application);
+  try
+  FormularioActualizar.AbrirPerfil(UsuarioActual);
+  FormularioActualizar.ShowModal;
+  finally
+  FormularioActualizar.Free;
   end;
 end;
 

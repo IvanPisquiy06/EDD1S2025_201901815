@@ -39,6 +39,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Papelera'
     TabOrder = 2
+    OnClick = ButtonPapeleraClick
   end
   object ButtonProgramar: TButton
     Left = 64
@@ -47,6 +48,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Programar Correo'
     TabOrder = 3
+    OnClick = ButtonProgramarClick
   end
   object ButtonProgramados: TButton
     Left = 64
@@ -55,6 +57,7 @@ object FormMenu: TFormMenu
     Width = 150
     Caption = 'Correos Programados'
     TabOrder = 4
+    OnClick = ButtonProgramadosClick
   end
   object ButtonAgregar: TButton
     Left = 64
@@ -81,6 +84,7 @@ object FormMenu: TFormMenu
     Width = 152
     Caption = 'Actualizar Perfil'
     TabOrder = 7
+    OnClick = ButtonActualizarClick
   end
   object ButtonReportes: TButton
     Left = 64

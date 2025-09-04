@@ -11,7 +11,8 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uprincipal, ulistasimple, ulogin, ucrearusuario, ulistadoble, umenu,
-  ubandeja, urootmenu, uenviar, ucontactos, uagregar, upila, upapelera
+  ubandeja, urootmenu, uenviar, ucontactos, uagregar, upila, upapelera, ucola,
+  uprogramar, uprogramados, uactualizar
   { you can add units after this };
 
 {$R *.res}
@@ -29,6 +30,9 @@ begin
   Application.CreateForm(TFormContactos, FormContactos);
   Application.CreateForm(TFormAgregar, FormAgregar);
   Application.CreateForm(TFormPapelera, FormPapelera);
+  Application.CreateForm(TFormProgramar, FormProgramar);
+  Application.CreateForm(TFormProgramados, FormProgramados);
+  Application.CreateForm(TFormActualizar, FormActualizar);
   Application.Run;
 end.
 

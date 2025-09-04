@@ -12,6 +12,7 @@ type
   TCorreo = record
     id: Integer;
     remitente: String;
+    destinatario: String;
     estado: String;
     programado: Boolean;
     asunto: String;
@@ -21,18 +22,19 @@ type
     siguiente: PCorreo;
   end;
 
-  procedure InsertarCorreo(var lista: PCorreo; id: Integer; remitente, estado, asunto, fecha, mensaje: String; programado: Boolean);
+  procedure InsertarCorreo(var lista: PCorreo; id: Integer; remitente, destinatario, estado, asunto, fecha, mensaje: String; programado: Boolean);
   procedure MostrarCorreos(lista: PCorreo);
 
 implementation
 
-procedure InsertarCorreo(var lista: PCorreo; id: Integer; remitente, estado, asunto, fecha, mensaje: String; programado: Boolean);
+procedure InsertarCorreo(var lista: PCorreo; id: Integer; remitente, destinatario, estado, asunto, fecha, mensaje: String; programado: Boolean);
 var
    nuevo, aux: PCorreo;
 begin
   New(nuevo);
   nuevo^.id := id;
   nuevo^.remitente := remitente;
+  nuevo^.destinatario:= destinatario;
   nuevo^.estado := estado;
   nuevo^.asunto := asunto;
   nuevo^.fecha := fecha;

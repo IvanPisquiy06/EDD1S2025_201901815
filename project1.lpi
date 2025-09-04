@@ -81,6 +81,7 @@
         <Filename Value="urootmenu.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormRoot"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -144,6 +145,10 @@
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormActualizar"/>
         <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ureportes.pas"/>
+        <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
   </ProjectOptions>

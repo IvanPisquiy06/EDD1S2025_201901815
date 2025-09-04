@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera, uprogramar, uprogramados, uactualizar;
+  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera, uprogramar, uprogramados, uactualizar, ureportes;
 
 type
 
@@ -31,6 +31,7 @@ type
   procedure ButtonProgramarClick(Sender: TObject);
   procedure ButtonProgramadosClick(Sender: TObject);
   procedure ButtonActualizarClick(Sender: TObject);
+  procedure ButtonReportesClick(Sender: TObject);
   private
 
   public
@@ -144,9 +145,10 @@ begin
 end;
 
 procedure TFormMenu.ButtonActualizarClick(Sender: TObject);
-var FormularioActualizar : TFormActualizar;
+var
+  FormularioActualizar : TFormActualizar;
 begin
-  FormularioActualizar := TFormProgramados.Create(Application);
+  FormularioActualizar := TFormActualizar.Create(Application);
   try
   FormularioActualizar.AbrirPerfil(UsuarioActual);
   FormularioActualizar.ShowModal;
@@ -154,6 +156,13 @@ begin
   FormularioActualizar.Free;
   end;
 end;
+
+procedure TFormMenu.ButtonReportesClick(Sender: TObject);
+ begin
+   ReporteCorreos(UsuarioActual, UsuarioActual^.usuario + '-reportes');
+
+   ShowMessage('Reportes creados');
+ end;
 
 end.
 

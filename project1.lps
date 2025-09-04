@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="6"/>
         <CursorPos X="11" Y="19"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="131"/>
       </Unit>
       <Unit>
         <Filename Value="uprincipal.pas"/>
@@ -21,7 +21,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="31"/>
         <CursorPos X="59" Y="38"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="131"/>
       </Unit>
       <Unit>
         <Filename Value="ulistasimple.pas"/>
@@ -29,7 +29,7 @@
         <UnitName Value="uListaSimple"/>
         <TopLine Value="13"/>
         <CursorPos X="47" Y="8"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="131"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -41,7 +41,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="24"/>
         <CursorPos X="55" Y="64"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="131"/>
       </Unit>
       <Unit>
         <Filename Value="ucrearusuario.pas"/>
@@ -51,15 +51,15 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="73" Y="45"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="131"/>
       </Unit>
       <Unit>
         <Filename Value="ulistadoble.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="25"/>
         <CursorPos X="45" Y="37"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -68,13 +68,11 @@
         <ComponentName Value="FormMenu"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="136"/>
-        <CursorPos X="37" Y="154"/>
-        <UsageCount Value="115"/>
+        <TopLine Value="154"/>
+        <CursorPos X="45" Y="172"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="ubandeja.pas"/>
@@ -85,24 +83,27 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="67"/>
         <CursorPos X="83" Y="101"/>
-        <UsageCount Value="111"/>
+        <UsageCount Value="121"/>
       </Unit>
       <Unit>
         <Filename Value="urootmenu.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormRoot"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="57"/>
-        <CursorPos X="26" Y="62"/>
-        <UsageCount Value="111"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="52"/>
+        <CursorPos X="108" Y="78"/>
+        <UsageCount Value="121"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="token.txt"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="41"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="86"/>
         <DefaultSyntaxHighlighter Value="Text"/>
       </Unit>
       <Unit>
@@ -110,7 +111,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="2" Y="84"/>
-        <UsageCount Value="76"/>
+        <UsageCount Value="86"/>
         <DefaultSyntaxHighlighter Value="None"/>
       </Unit>
       <Unit>
@@ -122,7 +123,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="54"/>
         <CursorPos X="86" Y="66"/>
-        <UsageCount Value="71"/>
+        <UsageCount Value="81"/>
       </Unit>
       <Unit>
         <Filename Value="ucontactos.pas"/>
@@ -132,7 +133,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="38" Y="48"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="71"/>
       </Unit>
       <Unit>
         <Filename Value="uagregar.pas"/>
@@ -142,15 +143,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="41"/>
         <CursorPos X="64" Y="56"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="71"/>
       </Unit>
       <Unit>
         <Filename Value="upila.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="40"/>
         <CursorPos X="21" Y="45"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -162,7 +163,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="100" Y="7"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="62"/>
       </Unit>
       <Unit>
         <Filename Value="ucola.pas"/>
@@ -170,7 +171,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="18"/>
         <CursorPos X="42" Y="61"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="58"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -182,21 +183,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="72"/>
         <CursorPos Y="92"/>
-        <UsageCount Value="48"/>
-      </Unit>
-      <Unit>
-        <Filename Value="ulogin.lfm"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="48" Y="6"/>
-        <UsageCount Value="0"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
+        <UsageCount Value="58"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/lib/lazarus/3.8/lcl/include/control.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="3450"/>
         <CursorPos X="20" Y="3460"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit>
       <Unit>
         <Filename Value="uprogramados.pas"/>
@@ -207,21 +201,30 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="63"/>
         <CursorPos X="107" Y="70"/>
-        <UsageCount Value="37"/>
+        <UsageCount Value="48"/>
       </Unit>
       <Unit>
         <Filename Value="uactualizar.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormActualizar"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <CursorPos X="41" Y="47"/>
-        <UsageCount Value="33"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ureportes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="88"/>
+        <CursorPos X="45" Y="100"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="15">
+    <JumpHistory HistoryIndex="22">
       <Position>
         <Filename Value="upila.pas"/>
         <Caret Line="19" Column="12" TopLine="9"/>
@@ -285,6 +288,34 @@
       <Position>
         <Filename Value="uactualizar.pas"/>
         <Caret Line="47" Column="41"/>
+      </Position>
+      <Position>
+        <Filename Value="ureportes.pas"/>
+        <Caret Line="88" Column="60" TopLine="84"/>
+      </Position>
+      <Position>
+        <Filename Value="umenu.pas"/>
+        <Caret Line="154" Column="54" TopLine="146"/>
+      </Position>
+      <Position>
+        <Filename Value="urootmenu.pas"/>
+        <Caret Line="45" Column="43" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="urootmenu.pas"/>
+        <Caret Line="81" Column="39" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="urootmenu.pas"/>
+        <Caret Line="78" Column="27" TopLine="70"/>
+      </Position>
+      <Position>
+        <Filename Value="ureportes.pas"/>
+        <Caret Line="94" Column="84" TopLine="84"/>
+      </Position>
+      <Position>
+        <Filename Value="ureportes.pas"/>
+        <Caret Line="92" Column="74" TopLine="84"/>
       </Position>
     </JumpHistory>
     <RunParams>

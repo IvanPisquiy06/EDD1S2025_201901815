@@ -136,6 +136,13 @@
         <Filename Value="uprogramados.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormProgramados"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uactualizar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormActualizar"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>

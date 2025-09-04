@@ -23,6 +23,15 @@ object FormRoot: TFormRoot
     TabOrder = 0
     OnClick = ButtonCargaClick
   end
+  object ButtonUsuarios: TButton
+    Left = 72
+    Height = 25
+    Top = 96
+    Width = 160
+    Caption = 'Reporte de Usuarios'
+    TabOrder = 1
+    OnClick = ButtonUsuariosClick
+  end
   object OpenDialogFile: TOpenDialog
     Left = 280
     Top = 8

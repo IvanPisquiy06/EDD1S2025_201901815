@@ -93,5 +93,6 @@ object FormMenu: TFormMenu
     Width = 150
     Caption = 'Generar Reportes'
     TabOrder = 8
+    OnClick = ButtonReportesClick
   end
 end

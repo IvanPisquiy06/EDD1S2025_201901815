@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera, uprogramar, uprogramados, uactualizar;
+  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera, uprogramar, uprogramados, uactualizar, ureportes;
 
 type
 
@@ -31,6 +31,7 @@ type
   procedure ButtonProgramarClick(Sender: TObject);
   procedure ButtonProgramadosClick(Sender: TObject);
   procedure ButtonActualizarClick(Sender: TObject);
+  procedure ButtonReportesClick(Sender: TObject);
   private
 
   public
@@ -144,7 +145,8 @@ begin
 end;
 
 procedure TFormMenu.ButtonActualizarClick(Sender: TObject);
-var FormularioActualizar : TFormActualizar;
+var
+  FormularioActualizar : TFormActualizar;
 begin
   FormularioActualizar := TFormActualizar.Create(Application);
   try
@@ -153,6 +155,21 @@ begin
   finally
   FormularioActualizar.Free;
   end;
+end;
+
+procedure TFormMenu.ButtonReportesClick(Sender: TObject);
+var
+  rutaReportes: String;
+begin
+  rutaReportes := 'reportes';
+
+  if UsuarioActual = nil then
+  begin
+    ShowMessage('Error: No se ha identificado al usuario actual.');
+    Exit;
+  end;
+
+  ReporteCorreos(UsuarioActual, rutaReportes);
 end;
 
 end.

@@ -12,7 +12,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, uprincipal, ulistasimple, ulogin, ucrearusuario, ulistadoble, umenu,
   ubandeja, urootmenu, uenviar, ucontactos, uagregar, upila, upapelera, ucola,
-  uprogramar, uprogramados, uactualizar
+  uprogramar, uprogramados, uactualizar, ureportes
   { you can add units after this };
 
 {$R *.res}

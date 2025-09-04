@@ -6,17 +6,19 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Menus,
-  ExtCtrls, ActnList, ulistasimple, fpjson, jsonparser, FileUtil;
+  ExtCtrls, ActnList, ulistasimple, fpjson, jsonparser, FileUtil, ureportes;
 
 type
 
   { TFormRoot }
 
   TFormRoot = class(TForm)
+    ButtonUsuarios: TButton;
     ButtonCarga: TButton;
     Label1: TLabel;
     OpenDialogFile: TOpenDialog;
     procedure ButtonCargaClick(Sender: TObject);
+    procedure ButtonUsuariosClick(Sender: TObject);
   private
 
   public
@@ -70,6 +72,23 @@ begin
          ShowMessage('Error al cargar JSON: ' + E.Message);
     end;
   end;
+end;
+
+procedure TFormRoot.ButtonUsuariosClick(Sender: TObject);
+begin
+
+end;
+
+procedure TFormRoot.ButtonUsuariosClick(Sender: TObject);
+var
+  rutaReportes: String;
+begin
+  rutaReportes := 'reportes';
+
+  ReporteUsuarios(listaUsuarios, rutaReportes);
+
+  ShowMessage('Reporte de usuarios generado');
+
 end;
 
 end.

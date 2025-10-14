@@ -5,23 +5,18 @@ unit ucontactos;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  uListaSimple, uarbolbst;
 
 type
 
   { TFormContactos }
 
   TFormContactos = class(TForm)
-    ButtonAnterior: TButton;
-    ButtonSiguiente: TButton;
     Label1: TLabel;
-    MemoInfo: TMemo;
-    procedure ButtonSiguienteClick(Sender: TObject);
-    procedure ButtonAnteriorClick(Sender: TObject);
+    ListBoxContactos: TListBox;
   private
     usuarioActual: PUsuario;
-    contactoActual: PContacto;
-    procedure MostrarContacto;
   public
     procedure AbrirContactos(u: PUsuario);
   end;
@@ -38,35 +33,15 @@ implementation
 procedure TFormContactos.AbrirContactos(u: PUsuario);
 begin
   usuarioActual := u;
-  contactoActual := u^.contactos;
-  MostrarContacto;
-end;
+  ListBoxContactos.Clear;
 
-procedure TFormContactos.MostrarContacto;
-begin
-  if contactoActual = nil then
-     MemoInfo.Text := 'Sin contactos';
+  if (usuarioActual <> nil) and (usuarioActual^.contactosBST <> nil) then
+  begin
+    InOrden(usuarioActual^.contactosBST, ListBoxContactos.Items);
+  end
   else
-    MemoInfo.Text := 'Nombre: ' + contactoActual^.refUsuario^.nombre +
-                     ' | Email: ' + contactoActual^.refUsuario^.email +
-                     ' | Tel: ' + contactoActual^.refUsuario^.telefono;
-end;
-
-procedure TFormContactos.ButtonSiguienteClick(Sender: TObject);
-begin
-  if (contactoActual <> nil) then
   begin
-    contactoActual := contactoActual^.siguiente;
-    MostrarContacto;
-  end;
-end;
-
-procedure TFormContactos.ButtonAnteriorClick(Sender: TObject);
-begin
-  if (contactoActual <> nil) then
-  begin
-    contactoActual := contactoActual^.anterior;
-    MostrarContacto;
+    ListBoxContactos.Items.Add('No hay contactos agregados')
   end;
 end;
 

@@ -5,16 +5,16 @@ unit uListaSimple;
 interface
 
 uses
-  SysUtils, Dialogs, ulistadoble, upila;
+  SysUtils, Dialogs, ulistadoble, upila, ucola, uarbolavl;
 
 type
+  PNodoBST = ^TNodoBST;
   PUsuario = ^TUsuario;
-  PContacto = ^TContacto;
 
-  TContacto = record
-    refUsuario: PUsuario;
-    siguiente: PContacto;
-    anterior: PContacto;
+  TNodoBST = record
+    contacto: PUsuario;
+    izquierda: PNodoBST;
+    derecha: PNodoBST;
   end;
 
   TUsuario = record
@@ -26,8 +26,9 @@ type
     password: String;
     siguiente: PUsuario;
     bandejaEntrada: PCorreo;
-    contactos: PContacto;
+    contactosBST: PNodoBST;
     pilaPapelera: PElementoPila;
+    borradores: PNodoAVL;
     colaProgramadosFrente: PElementoCola;
     colaProgramadosFin: PElementoCola;
   end;
@@ -37,13 +38,15 @@ var
 
 procedure InsertarUsuario(var lista: PUsuario; id: Integer; nombre, usuario, email, telefono, password: String);
 procedure MostrarUsuarios(lista: PUsuario);
-procedure AgregarContacto(var lista: PContacto; nuevoUsuario: PUsuario);
-function IniciarSesion(lista: PUsuario; email, password: String): PUsuario;
+function IniciarSesion(lista: PUsuario; usuario, password: String): PUsuario;
 function ExisteUsuario(lista: PUsuario; email, usuario: String): Boolean;
 function BuscarUsuarioEmail(lista: PUsuario; email: String): PUsuario;
 function EsContacto(usuario: PUsuario; email: String): Boolean;
 
 implementation
+
+uses
+  uarbolbst;
 
 procedure InsertarUsuario(var lista: PUsuario; id: Integer; nombre, usuario, email, telefono, password: String);
 var
@@ -58,7 +61,9 @@ begin
   nuevo^.password:= password;
   nuevo^.siguiente := nil;
   nuevo^.bandejaEntrada := nil;
+  nuevo^.contactosBST := nil;
   nuevo^.pilaPapelera := nil;
+  nuevo^.borradores := nil;
   nuevo^.colaProgramadosFrente := nil;
   nuevo^.colaProgramadosFin := nil;
 
@@ -84,7 +89,7 @@ begin
   end;
 end;
 
-function IniciarSesion(lista: PUsuario; email, password: String): PUsuario;
+function IniciarSesion(lista: PUsuario; usuario, password: String): PUsuario;
 var
   aux: PUsuario;
 begin
@@ -97,7 +102,7 @@ begin
   aux := lista;
   while aux <> nil do
   begin
-    if (aux^.email = email) and (aux^.password = password) then
+    if (aux^.usuario = usuario) and (aux^.password = password) then
     begin
       Result := aux;
       Exit;
@@ -141,45 +146,15 @@ end;
 Result := nil;
 end;
 
-procedure AgregarContacto(var lista: PContacto; nuevoUsuario: PUsuario);
-var
-  nuevo, aux: PContacto;
-begin
-     New(nuevo);
-     nuevo^.refUsuario := nuevoUsuario;
-
-     if lista = nil then
-     begin
-       lista := nuevo;
-       nuevo^.siguiente := nuevo;
-       nuevo^.anterior := nuevo;
-     end
-     else
-     begin
-          aux := lista^.anterior;
-          aux^.siguiente := nuevo;
-          nuevo^.anterior := aux;
-          nuevo^.siguiente := lista;
-          lista^.anterior := nuevo;
-     end;
-end;
-
 function EsContacto(usuario: PUsuario; email: String): Boolean;
-var
-  aux:PContacto;
 begin
-  Result := False;
-  if (usuario = nil) or (usuario^.contactos = nil) then Exit;
+  if (usuario = nil) or (usuario^.contactosBST = nil) then
+  begin
+    Result := False;
+    Exit;
+  end;
 
-  aux := usuario^.contactos;
-  repeat
-    if aux^.refUsuario^.email = email then
-    begin
-      Result := True;
-      Exit;
-    end;
-    aux := aux^.siguiente;
-  until aux = usuario^.contactos;
+  Result := BuscarBST(usuario^.contactosBST, email);
 end;
 
 end.

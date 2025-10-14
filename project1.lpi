@@ -103,12 +103,14 @@
         <Filename Value="ucontactos.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormContactos"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="uagregar.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormAgregar"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
@@ -149,6 +151,55 @@
       <Unit>
         <Filename Value="ureportes.pas"/>
         <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uarbolavl.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uborradores.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormBorradores"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uarbolbst.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uarbolb.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ufavoritos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormFavoritos"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucomunidades.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uComunidades"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucrearcomunidad.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormCrearComunidad"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="umensajecomunidad.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormMensajeComunidad"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uvermensajes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormVerMensajes"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>
   </ProjectOptions>

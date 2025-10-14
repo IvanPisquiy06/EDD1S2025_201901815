@@ -5,7 +5,7 @@ unit uagregar;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple, uarbolbst;
 
 type
 
@@ -41,19 +41,36 @@ end;
 
 procedure TFormAgregar.ButtonAgregarClick(Sender: TObject);
 var
-  nuevoContacto: PUsuario;
+  emailAgregar: String;
+  usuarioAgregar: PUsuario;
 begin
-  if EditEmail.Text = '' then Exit;
+  usuarioAgregar := nil;
 
-  nuevoContacto := BuscarUsuarioEmail(listaUsuarios, EditEmail.Text);
-  if nuevoContacto = nil then
-  Begin
-    ShowMessage('Error: usuario no existe en el sistema');
+  if usuarioActual = nil then
+  begin
+    ShowMessage('Error: No se pudo identifigar el usuario actual.');
     Exit;
   end;
 
-  AgregarContacto(usuarioActual^.contactos, nuevoContacto);
-  ShowMessage('Contacto agregado: ' + nuevoContacto^.nombre);
+  emailAgregar := EditEmail.text;
+
+  if emailAgregar = usuarioActual^.email then
+  begin
+    ShowMessage('No se puede agregar el correo del usuario como contacto');
+    Exit;
+  end;
+
+  usuarioAgregar := BuscarUsuarioEmail(listaUsuarios, emailAgregar);
+
+  if usuarioAgregar = nil then
+  begin
+      ShowMessage('No se encontro ningun usuario con el email: ' + emailAgregar);
+      Exit;
+  end;
+
+  InsertarBST(usuarioActual^.contactosBST, usuarioAgregar);
+
+  ShowMessage('Contacto "' + usuarioAgregar^.nombre + '" agregado exitosamente.');
   Close;
 end;
 

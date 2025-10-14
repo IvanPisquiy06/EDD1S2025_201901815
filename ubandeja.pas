@@ -6,26 +6,27 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  ActnList, ulistadoble, ulistasimple, upila;
+  ActnList, ulistadoble, ulistasimple, upila, uarbolb;
 
 type
-
   { TFormBandeja }
-
   TFormBandeja = class(TForm)
+    ButtonFavorito: TButton;
     ButtonOrdenar: TButton;
     ButtonEliminar: TButton;
     Label1: TLabel;
     LabelNoLeidos: TLabel;
     ListBoxCorreos: TListBox;
     MemoMensaje: TMemo;
+    procedure ButtonFavoritoClick(Sender: TObject);
     procedure ButtonOrdenarClick(Sender: TObject);
     procedure ButtonEliminarClick(Sender: TObject);
     procedure ListBoxCorreosClick(Sender: TObject);
   private
-         usuarioActual: PUsuario;
+    usuarioActual: PUsuario;
+    correoActual: PCorreo;
   public
-        procedure CargarBandeja(u: PUsuario);
+    procedure CargarBandeja(u: PUsuario);
   end;
 
 var
@@ -42,76 +43,79 @@ var
   aux: PCorreo;
   noLeidos: Integer;
 begin
-     usuarioActual := u;
-     ListBoxCorreos.Clear;
-     noLeidos := 0;
+  usuarioActual := u;
+  correoActual := nil;
+  ListBoxCorreos.Clear;
+  MemoMensaje.Clear;
+  noLeidos := 0;
 
-     aux := usuarioActual^.bandejaEntrada;
-     while aux <> nil do
-     begin
-       ListBoxCorreos.Items.Add('[' + aux^.estado + '] ' + aux^.asunto + ' - ' + aux^.remitente);
-       if aux^.estado = 'NL' then
-          Inc(noLeidos);
-       aux := aux^.siguiente;
-     end;
-     LabelNoLeidos.Caption := 'No leidos: ' + IntToStr(noLeidos);
+  aux := usuarioActual^.bandejaEntrada;
+  while aux <> nil do
+  begin
+    ListBoxCorreos.Items.AddObject('[' + aux^.estado + '] ' + aux^.asunto + ' - ' + aux^.remitente, TObject(aux));
+    if aux^.estado = 'NL' then
+      Inc(noLeidos);
+    aux := aux^.siguiente;
+  end;
+  LabelNoLeidos.Caption := 'No leidos: ' + IntToStr(noLeidos);
 end;
 
 procedure TFormBandeja.ListBoxCorreosClick(Sender: TObject);
 var
   idx: Integer;
-  aux: PCorreo;
-  i: Integer;
-
 begin
-     idx := ListBoxCorreos.ItemIndex;
-     if idx < 0 then Exit;
+  idx := ListBoxCorreos.ItemIndex;
+  if idx < 0 then
+  begin
+    correoActual := nil;
+    MemoMensaje.Clear;
+    Exit;
+  end;
 
-     aux := usuarioActual^.bandejaEntrada;
-     i := 0;
-     while (aux <> nil) and (i < idx) do
-     begin
-       aux := aux^.siguiente;
-       Inc(i);
-     end;
+  correoActual := PCorreo(ListBoxCorreos.Items.Objects[idx]);
 
-     if aux <> nil then
-     begin
-       MemoMensaje.Text := aux^.mensaje;
-       aux^.estado := 'L';
-       ListBoxCorreos.Items[idx] := '[L] ' + aux^.asunto + ' - ' + aux^.remitente;
-     end;
+  if correoActual <> nil then
+  begin
+    MemoMensaje.Text := correoActual^.mensaje;
+    if correoActual^.estado = 'NL' then
+    begin
+      correoActual^.estado := 'L';
+      ListBoxCorreos.Items[idx] := '[L] ' + correoActual^.asunto + ' - ' + correoActual^.remitente;
+      CargarBandeja(usuarioActual);
+      ListBoxCorreos.ItemIndex := idx;
+    end;
+  end;
 end;
 
 procedure TFormBandeja.ButtonOrdenarClick(Sender: TObject);
 begin
-     ListBoxCorreos.Sorted := True;
+  ListBoxCorreos.Sorted := not ListBoxCorreos.Sorted;
+end;
+
+procedure TFormBandeja.ButtonFavoritoClick(Sender: TObject);
+begin
+  if correoActual = nil then
+  begin
+    ShowMessage('No hay ningún correo seleccionado para marcar como favorito.');
+    Exit;
+  end;
+
+  InsertarB(usuarioActual^.favoritos, correoActual);
+  ShowMessage('Correo "' + correoActual^.asunto + '" agregado a favoritos.');
 end;
 
 procedure TFormBandeja.ButtonEliminarClick(Sender: TObject);
-var
-  idx, i: Integer;
-  aux: PCorreo;
 begin
-     idx := ListBoxCorreos.ItemIndex;
-     if idx < 0 then Exit;
+  if correoActual = nil then
+  begin
+    ShowMessage('Por favor, selecciona un correo para eliminar.');
+    Exit;
+  end;
 
-     aux := usuarioActual^.bandejaEntrada;
-     i := 0;
-     while (aux <> nil) and (i < idx) do
-     begin
-       aux := aux^.siguiente;
-       Inc(i);
-     end;
+  Push(usuarioActual^.pilaPapelera, correoActual);
+  ShowMessage('Correo "' + correoActual^.asunto + '" movido a la papelera.');
 
-     if aux <> nil then
-     begin
-       Push(usuarioActual^.pilaPapelera, aux);
-       ShowMessage('Eliminando correo: ' + aux^.asunto);
-     end;
-
-     CargarBandeja(usuarioActual);
+  CargarBandeja(usuarioActual);
 end;
 
 end.
-

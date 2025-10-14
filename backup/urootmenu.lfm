@@ -1,10 +1,10 @@
 object FormRoot: TFormRoot
   Left = -3
-  Height = 240
+  Height = 247
   Top = -30
   Width = 320
   Caption = 'FormRoot'
-  ClientHeight = 240
+  ClientHeight = 247
   ClientWidth = 320
   LCLVersion = '3.8.0.0'
   object Label1: TLabel
@@ -14,23 +14,51 @@ object FormRoot: TFormRoot
     Width = 33
     Caption = 'Root'
   end
-  object ButtonCarga: TButton
-    Left = 96
-    Height = 25
-    Top = 48
-    Width = 112
-    Caption = 'Carga Masiva'
-    TabOrder = 0
-    OnClick = ButtonCargaClick
-  end
   object ButtonUsuarios: TButton
     Left = 72
     Height = 25
-    Top = 96
+    Top = 128
     Width = 160
     Caption = 'Reporte de Usuarios'
-    TabOrder = 1
+    TabOrder = 0
     OnClick = ButtonUsuariosClick
+    OnContextPopup = ButtonUsuariosContextPopup
+  end
+  object ButtonCrearComunidad: TButton
+    Left = 72
+    Height = 25
+    Top = 168
+    Width = 162
+    Caption = 'Crear Comunidad'
+    TabOrder = 1
+    OnClick = ButtonCrearComunidadClick
+  end
+  object ButtonCargaUsuarios: TButton
+    Left = 72
+    Height = 25
+    Top = 48
+    Width = 160
+    Caption = 'Carga Usuarios'
+    TabOrder = 2
+    OnClick = ButtonCargaUsuariosClick
+  end
+  object ButtonCargaCorreos: TButton
+    Left = 72
+    Height = 25
+    Top = 88
+    Width = 160
+    Caption = 'Carga Correos'
+    TabOrder = 3
+    OnClick = ButtonCargaCorreosClick
+  end
+  object ButtonVerMensajes: TButton
+    Left = 72
+    Height = 25
+    Top = 208
+    Width = 160
+    Caption = 'Ver mensajes'
+    TabOrder = 4
+    OnClick = ButtonVerMensajesClick
   end
   object OpenDialogFile: TOpenDialog
     Left = 280

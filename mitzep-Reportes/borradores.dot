@@ -1,0 +1,8 @@
+digraph G {
+node [shape=record, style=filled, fillcolor=khaki];
+avl7151 [label="{<izq>|<data> ID: 7151 - FE: -1|<der>}"];
+avl6027 [label="{<izq>|<data> ID: 6027 - FE: 1|<der>}"];
+avl5488 [label="{<izq>|<data> ID: 5488 - FE: 1|<der>}"];
+"avl7151":izq -> "avl6027":data;
+"avl6027":izq -> "avl5488":data;
+}

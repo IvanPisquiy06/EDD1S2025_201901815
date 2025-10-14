@@ -20,6 +20,7 @@ type
     EditPassword: TEdit;
     procedure ButtonLoginClick(Sender: TObject);
     procedure ButtonCreateClick(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
   private
 
   public
@@ -89,6 +90,11 @@ begin
   finally
     FormCrear.Free;
   end;
+end;
+
+procedure TFormLogin.Label1Click(Sender: TObject);
+begin
+
 end;
 
 end.

@@ -6,14 +6,18 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera, uprogramar, uprogramados, uactualizar, ureportes;
+  ubandeja, ulistasimple, uenviar, ucontactos, uagregar, upapelera, uprogramar, uprogramados,
+  uactualizar, ureportes, uborradores, ufavoritos, umensajecomunidad;
 
 type
 
   { TFormMenu }
 
   TFormMenu = class(TForm)
+    ButtonPublicarMensaje: TButton;
+    ButtonFavoritos: TButton;
     ButtonBandeja: TButton;
+    ButtonBorradores: TButton;
     ButtonEnviar: TButton;
     ButtonPapelera: TButton;
     ButtonProgramar: TButton;
@@ -24,13 +28,16 @@ type
     ButtonReportes: TButton;
     Label1: TLabel;
   procedure ButtonBandejaClick(Sender: TObject);
+  procedure ButtonBorradoresClick(Sender: TObject);
   procedure ButtonEnviarClick(Sender: TObject);
   procedure ButtonContactosClick(Sender: TObject);
   procedure ButtonAgregarClick(Sender: TObject);
+  procedure ButtonFavoritosClick(Sender: TObject);
   procedure ButtonPapeleraClick(Sender: TObject);
   procedure ButtonProgramarClick(Sender: TObject);
   procedure ButtonProgramadosClick(Sender: TObject);
   procedure ButtonActualizarClick(Sender: TObject);
+  procedure ButtonPublicarMensajeClick(Sender: TObject);
   procedure ButtonReportesClick(Sender: TObject);
   private
 
@@ -61,6 +68,19 @@ begin
     FormBandeja.ShowModal;
   finally
     FormBandeja.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonBorradoresClick(Sender: TObject);
+var
+  FormularioBorradores: TFormBorradores;
+begin
+  FormularioBorradores := TFormBorradores.Create(Application);
+  try
+    FormularioBorradores.AbrirBorradores(UsuarioActual);
+    FormularioBorradores.ShowModal;
+  finally
+    FormularioBorradores.Free;
   end;
 end;
 
@@ -99,6 +119,19 @@ begin
     FormularioAgregar.ShowModal;
   finally
     FormularioAgregar.Free;
+  end;
+end;
+
+procedure TFormMenu.ButtonFavoritosClick(Sender: TObject);
+var
+  FormularioFavoritos: TFormFavoritos;
+begin
+  FormularioFavoritos := TFormFavoritos.Create(Application);
+  try
+    FormularioFavoritos.AbrirFavoritos(UsuarioActual);
+    FormularioFavoritos.ShowModal;
+  finally
+    FormularioFavoritos.Free;
   end;
 end;
 
@@ -157,12 +190,34 @@ begin
   end;
 end;
 
-procedure TFormMenu.ButtonReportesClick(Sender: TObject);
- begin
-   ReporteCorreos(UsuarioActual, UsuarioActual^.usuario + '-reportes');
+procedure TFormMenu.ButtonPublicarMensajeClick(Sender: TObject);
+var
+  Formulario: TFormMensajeComunidad;
+begin
+  Formulario := TFormMensajeComunidad.Create(Application);
+  try
+    Formulario.Abrir(UsuarioActual);
+    Formulario.ShowModal;
+  finally
+    Formulario.Free;
+  end;
+end;
 
-   ShowMessage('Reportes creados');
- end;
+procedure TFormMenu.ButtonReportesClick(Sender: TObject);
+var
+  rutaReportes: String;
+begin
+  rutaReportes := 'reportes';
+
+  if UsuarioActual = nil then
+  begin
+    ShowMessage('Error: No se ha identificado al usuario actual.');
+    Exit;
+  end;
+
+  ReporteCorreos(UsuarioActual, rutaReportes);
+  ShowMessage('Reportes generados correctamente');
+end;
 
 end.
 

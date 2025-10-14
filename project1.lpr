@@ -12,7 +12,9 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, uprincipal, ulistasimple, ulogin, ucrearusuario, ulistadoble, umenu,
   ubandeja, urootmenu, uenviar, ucontactos, uagregar, upila, upapelera, ucola,
-  uprogramar, uprogramados, uactualizar, ureportes
+  uprogramar, uprogramados, uactualizar, ureportes, uarbolavl, uborradores,
+  uarbolbst, uarbolb, ufavoritos, ucomunidades, ucrearcomunidad, 
+umensajecomunidad, uvermensajes
   { you can add units after this };
 
 {$R *.res}
@@ -33,6 +35,11 @@ begin
   Application.CreateForm(TFormProgramar, FormProgramar);
   Application.CreateForm(TFormProgramados, FormProgramados);
   Application.CreateForm(TFormActualizar, FormActualizar);
+  Application.CreateForm(TFormBorradores, FormBorradores);
+  Application.CreateForm(TFormFavoritos, FormFavoritos);
+  Application.CreateForm(TFormCrearComunidad, FormCrearComunidad);
+  Application.CreateForm(TFormMensajeComunidad, FormMensajeComunidad);
+  Application.CreateForm(TFormVerMensajes, FormVerMensajes);
   Application.Run;
 end.
 

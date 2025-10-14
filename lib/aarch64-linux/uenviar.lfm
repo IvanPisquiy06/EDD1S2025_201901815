@@ -62,10 +62,19 @@ object FormEnviar: TFormEnviar
   object ButtonEnviar: TButton
     Left = 56
     Height = 25
-    Top = 264
+    Top = 240
     Width = 75
     Caption = 'Enviar'
     TabOrder = 3
     OnClick = ButtonEnviarClick
+  end
+  object ButtonGuardarBorrador: TButton
+    Left = 24
+    Height = 25
+    Top = 289
+    Width = 139
+    Caption = 'Guardar borrador'
+    TabOrder = 4
+    OnClick = ButtonGuardarBorradorClick
   end
 end

@@ -59,4 +59,13 @@ object FormBandeja: TFormBandeja
     TabOrder = 3
     OnClick = ButtonEliminarClick
   end
+  object ButtonFavorito: TButton
+    Left = 160
+    Height = 25
+    Top = 448
+    Width = 75
+    Caption = 'Favorito'
+    TabOrder = 4
+    OnClick = ButtonFavoritoClick
+  end
 end

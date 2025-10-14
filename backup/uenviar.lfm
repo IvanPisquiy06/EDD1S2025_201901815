@@ -27,7 +27,6 @@ object FormEnviar: TFormEnviar
     Top = 64
     Width = 136
     TabOrder = 0
-    Text = 'EditDestinatario'
   end
   object Label3: TLabel
     Left = 56
@@ -42,7 +41,6 @@ object FormEnviar: TFormEnviar
     Top = 126
     Width = 136
     TabOrder = 1
-    Text = 'EditAsunto'
   end
   object Label4: TLabel
     Left = 56
@@ -64,10 +62,18 @@ object FormEnviar: TFormEnviar
   object ButtonEnviar: TButton
     Left = 56
     Height = 25
-    Top = 264
+    Top = 240
     Width = 75
     Caption = 'Enviar'
     TabOrder = 3
     OnClick = ButtonEnviarClick
+  end
+  object ButtonGuardarBorrador: TButton
+    Left = 24
+    Height = 25
+    Top = 289
+    Width = 139
+    Caption = 'Guardar borrador'
+    TabOrder = 4
   end
 end

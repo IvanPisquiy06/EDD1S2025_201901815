@@ -1,23 +1,28 @@
 unit ureportes;
 
-{$mode ObjFPC}{$H+}
+{$mode delphi}{$H+}
 
 interface
 
 uses
-  Classes, SysUtils, ulistasimple, ulistadoble, upila, ucola, uarbolavl, uarbolb, ucomunidades, Process;
+  Classes, SysUtils, ulistasimple, ulistadoble, upila, ucola, uarbolavl, uarbolb, ucomunidades,
+  Process, ugrafos, ublockchain, Generics.Collections, FileUtil;
 
 procedure ReporteUsuarios(lista: PUsuario; ruta: String);
 procedure ReporteCorreos(usuario: PUsuario; ruta: String);
 procedure ReportePapelera(usuario: PUsuario; ruta: String);
 procedure ReporteProgramados(usuario: PUsuario; ruta: String);
+procedure GenerarReporteBlockchain(ruta: String);
 
 procedure ReporteContactos(usuario: PUsuario; ruta: String);
 procedure ReporteBorradores(usuario: PUsuario; ruta: String);
 procedure ReporteFavoritos(usuario: PUsuario; ruta: String);
 procedure ReporteComunidades(ruta: String);
+procedure EjecutarDot(dotFile, outFile: String);
+procedure ReporteGrafoUsuarios(ruta: String);
 
 implementation
+uses uhuffman, Dialogs;
 
 procedure EjecutarDot(dotFile, outFile: String);
 var
@@ -34,6 +39,84 @@ begin
     AProcess.Execute;
   finally
     AProcess.Free;
+  end;
+end;
+
+procedure GenerarReporteBlockchain(ruta: String);
+var
+  F: TextFile;
+  bloqueActual: PBloque;
+  blockName: String;
+  dataString: String;
+  dotFileName: String;
+  pngFileName: String;
+  genesisLabel: String;
+begin
+  bloqueActual := GetBlockchainHead;
+
+  if bloqueActual = nil then
+  begin
+    ShowMessage('El Blockchain está vacío, no se puede generar el reporte.');
+    Exit;
+  end;
+
+  pngFileName := IncludeTrailingPathDelimiter(ruta) + 'blockchain_report.png';
+  dotFileName := ChangeFileExt(pngFileName, '.dot');
+
+  AssignFile(F, dotFileName);
+  Rewrite(F);
+
+  WriteLn(F, 'digraph Blockchain {');
+  WriteLn(F, '  rankdir=TB;');
+  WriteLn(F, '  node [shape=record, style=filled, fillcolor="#f0f0f0", fontname="Arial"];');
+  WriteLn(F, '  edge [dir=forward, arrowhead=vee];');
+  WriteLn(F, '');
+
+  while bloqueActual <> nil do
+  begin
+    blockName := 'block' + IntToStr(bloqueActual^.index);
+
+    if bloqueActual^.index = 0 then
+    begin
+      dataString := 'Data: Genesis Block';
+      genesisLabel := ' (Genesis)';
+    end
+    else
+      dataString := Format('Data: ID: %d, Remitente: %s, Asunto: %s, Mensaje: %s',
+                           [bloqueActual^.datos.ID,
+                            StringReplace(bloqueActual^.datos.Remitente, '"', '\"', [rfReplaceAll]),
+                            StringReplace(bloqueActual^.datos.Asunto, '"', '\"', [rfReplaceAll]),
+                            StringReplace(Copy(bloqueActual^.datos.Mensaje, 1, 30) + '...', '"', '\"', [rfReplaceAll]) // Acortar mensaje
+                           ]);
+    genesisLabel := '';
+
+    WriteLn(F, '  ', blockName, ' [label="');
+    WriteLn(F, '    {<h>Block ', IntToStr(bloqueActual^.index), genesisLabel, '|');
+    WriteLn(F, '    Index: ', IntToStr(bloqueActual^.index), '|');
+    WriteLn(F, '    Timestamp: ', FormatDateTime('yyyy-mm-dd hh:nn:ss', bloqueActual^.timestamp), '|');
+    WriteLn(F, '    ', dataString, '|');
+    WriteLn(F, '    Nonce: ', IntToStr(bloqueActual^.nonce), '|');
+    WriteLn(F, '    Prev Hash: ', Copy(bloqueActual^.hashAnterior, 1, 8), '...|');
+    WriteLn(F, '    Hash: ', Copy(bloqueActual^.hash, 1, 8), '...');
+    WriteLn(F, '    }"];');
+
+    if bloqueActual^.index > 0 then
+    begin
+      WriteLn(F, '  block', IntToStr(bloqueActual^.index - 1), ' -> ', blockName, ';');
+    end;
+
+    bloqueActual := bloqueActual^.siguiente;
+  end;
+
+  WriteLn(F, '}');
+  CloseFile(F);
+
+  try
+    EjecutarDot(dotFileName, pngFileName);
+    ShowMessage('Reporte de Blockchain generado en: ' + pngFileName);
+  except
+    on E: Exception do
+      ShowMessage('Error al generar el reporte de Blockchain: ' + E.Message);
   end;
 end;
 
@@ -385,6 +468,47 @@ begin
   end;
   WriteLn(archivo, '}');
   CloseFile(archivo);
+  EjecutarDot(dotFile, outFile);
+end;
+
+procedure ReporteGrafoUsuarios(ruta: String);
+var
+  archivo: TextFile;
+  dotFile, outFile: String;
+  verticeAux: PVertice;
+  aristaAux: PAdyacente;
+begin
+  ConstruirGrafoGlobal(listaUsuarios);
+
+  if not DirectoryExists(ruta) then CreateDir(ruta);
+  dotFile := ruta + '/grafo_usuarios.dot';
+  outFile := ruta + '/grafo_usuarios.png';
+
+  AssignFile(archivo, dotFile);
+  Rewrite(archivo);
+
+  WriteLn(archivo, 'digraph G {');
+  WriteLn(archivo, 'label="Grafo de Relaciones de Usuarios";');
+  WriteLn(archivo, 'node [shape=box, style=filled, fillcolor=lightblue];');
+
+  verticeAux := grafoUsuarios;
+  while verticeAux <> nil do
+  begin
+    WriteLn(archivo, 'u', verticeAux^.usuario^.id, ' [label="', verticeAux^.usuario^.usuario, '\n', verticeAux^.usuario.email, '"];');
+
+    aristaAux := verticeAux^.adyacentes;
+    while aristaAux <> nil do
+    begin
+      WriteLn(archivo, 'u', verticeAux^.usuario^.id, ' -> u', aristaAux^.destino^.id, ';');
+      aristaAux := aristaAux^.siguiente;
+    end;
+
+    verticeAux := verticeAux^.siguiente;
+  end;
+
+  WriteLn(archivo, '}');
+  CloseFile(archivo);
+
   EjecutarDot(dotFile, outFile);
 end;
 

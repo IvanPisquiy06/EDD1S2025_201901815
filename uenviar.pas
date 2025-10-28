@@ -5,7 +5,8 @@ unit uenviar;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls, ulistasimple, ulistadoble, uarbolavl;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  ulistasimple, ulistadoble, uarbolavl;
 
 type
 
@@ -14,6 +15,8 @@ type
   TFormEnviar = class(TForm)
     ButtonGuardarBorrador: TButton;
     ButtonEnviar: TButton;
+    CheckCompartido: TCheckBox;
+    CheckPrivado: TCheckBox;
     EditDestinatario: TEdit;
     EditAsunto: TEdit;
     Label1: TLabel;
@@ -34,6 +37,7 @@ var
   FormEnviar: TFormEnviar;
 
 implementation
+uses umerkle, ublockchain;
 
 {$R *.lfm}
 
@@ -57,27 +61,53 @@ procedure TFormEnviar.ButtonEnviarClick(Sender: TObject);
 var
   destinatario: PUsuario;
   nuevoId: Integer;
+  datosBlockchain: TDatosCorreoBlock;
+  arbolPrivado: PMerkleNode;
 begin
-  if usuarioActual = nil then Exit;
-
-  if not EsContacto(usuarioActual, EditDestinatario.Text) then
-  begin
-    ShowMessage('Error: solo puedes enviar correos a tus contactos');
-    Exit;
-  end;
-
   destinatario := BuscarUsuarioEmail(listaUsuarios, EditDestinatario.Text);
   if destinatario = nil then
   begin
-    ShowMessage('Error: destinatario no encontrado o no es tu contacto');
+    ShowMessage('Destinatario no encontrado.');
     Exit;
   end;
 
-  nuevoId := Random(10000);
-  InsertarCorreo(destinatario^.bandejaEntrada, nuevoId, usuarioActual^.email, EditDestinatario.Text,
-                                               'NL', EditAsunto.Text, DateTimeToStr(Now), MemoMensaje.Text, False);
+  nuevoId := SiguienteIdGlobalCorreo();
 
-  ShowMessage('Correo enviado a ' + destinatario^.nombre);
+  if CheckPrivado.Checked then
+  begin
+    InsertarCorreo(destinatario^.correosPrivados, nuevoId, usuarioActual^.email,
+      EditDestinatario.Text, 'NL', EditAsunto.Text, DateTimeToStr(Now),
+      MemoMensaje.Text, True);
+
+    arbolPrivado := CrearMerkleTree(destinatario^.correosPrivados);
+
+    if arbolPrivado <> nil then
+      destinatario^.merkleRoot := arbolPrivado^.hash
+    else
+      destinatario^.merkleRoot := '';
+
+    LiberarMerkleTree(arbolPrivado);
+    ShowMessage('Correo Privado enviado y asegurado.');
+  end
+  else
+  begin
+    InsertarCorreo(destinatario^.bandejaEntrada, nuevoId, usuarioActual^.email,
+      EditDestinatario.Text, 'NL', EditAsunto.Text, DateTimeToStr(Now),
+      MemoMensaje.Text, False);
+    ShowMessage('Correo enviado exitosamente.');
+  end;
+
+  ShowMessage('Iniciando registro de envío en Blockchain... (Minando bloque)');
+
+  datosBlockchain.ID := nuevoId;
+  datosBlockchain.Remitente := usuarioActual^.email;
+  datosBlockchain.Asunto := EditAsunto.Text;
+  datosBlockchain.Mensaje := MemoMensaje.Text;
+
+  MinarYAnadirBloque(datosBlockchain);
+
+  ShowMessage('Bloque minado y añadido al registro global.');
+
   Close;
 end;
 

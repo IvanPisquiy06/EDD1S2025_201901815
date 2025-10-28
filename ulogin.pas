@@ -5,12 +5,11 @@ unit ulogin;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple, ucrearusuario, umenu, urootmenu;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple, ucrearusuario, umenu, urootmenu,
+  ublockchain, ulogcontrol;
 
 type
-
   { TFormLogin }
-
   TFormLogin = class(TForm)
     ButtonLogin: TButton;
     ButtonCreate: TButton;
@@ -22,9 +21,7 @@ type
     procedure ButtonCreateClick(Sender: TObject);
     procedure Label1Click(Sender: TObject);
   private
-
   public
-
   end;
 
 var
@@ -37,6 +34,7 @@ implementation
 procedure TFormLogin.ButtonLoginClick(Sender: TObject);
 var
   usuario: PUsuario;
+  sesion: PLogSession;
   emailIngresado, passwordIngresado: String;
 
   FormularioMenu: TFormMenu;
@@ -45,46 +43,51 @@ begin
   emailIngresado := Trim(EditEmail.Text);
   passwordIngresado := Trim(EditPassword.Text);
 
-  usuario:= IniciarSesion(listaUsuarios, emailIngresado, passwordIngresado);
-  if usuario <> nil then
-     begin
-          Self.Hide;
-          if usuario^.usuario = 'root' then
-          begin
-               FormularioRoot := TFormRoot.Create(Application);
-               try
-                 FormularioRoot.ShowModal;
-               finally
-                 FormularioRoot.Free;
-               end;
-          end
-          else
-          begin
-            FormularioMenu := TFormMenu.Create(Application);
-            try
-              FormularioMenu.UsuarioActual := usuario;
+  usuario := IniciarSesion(listaUsuarios, emailIngresado, passwordIngresado);
 
-              FormularioMenu.ShowModal;
-            finally
-              FormularioMenu.Free;
-            end;
-          end;
-          Self.Show;
-          EditPassword.Clear;
-          EditPassword.SetFocus;
-     end
-  else
-      begin
-        ShowMessage('Credenciales incorrectas');
-        EditPassword.Clear;
-        EditPassword.SetFocus;
+  if usuario <> nil then
+  begin
+    sesion := IniciarSesionLog(usuario);
+
+    Self.Hide;
+
+    if usuario^.usuario = 'root' then
+    begin
+      FormularioRoot := TFormRoot.Create(Application);
+      try
+        FormularioRoot.sesionActual := sesion;
+        FormularioRoot.ShowModal;
+      finally
+        FormularioRoot.Free;
       end;
+    end
+    else
+    begin
+      FormularioMenu := TFormMenu.Create(Application);
+      try
+        FormularioMenu.UsuarioActual := usuario;
+        FormularioMenu.sesionActual := sesion;
+        FormularioMenu.ShowModal;
+      finally
+        FormularioMenu.Free;
+      end;
+    end;
+
+    Self.Show;
+    EditPassword.Clear;
+    EditPassword.SetFocus;
+  end
+  else
+  begin
+    ShowMessage('Credenciales incorrectas');
+    EditPassword.Clear;
+    EditPassword.SetFocus;
+  end;
 end;
 
 procedure TFormLogin.ButtonCreateClick(Sender: TObject);
 begin
   FormCrear := TFormCrear.Create(Self);
-
   try
     FormCrear.ShowModal;
   finally
@@ -94,8 +97,6 @@ end;
 
 procedure TFormLogin.Label1Click(Sender: TObject);
 begin
-
 end;
 
 end.
-

@@ -1,0 +1,26 @@
+digraph G {
+label="Grafo de Relaciones de Usuarios";
+node [shape=box, style=filled, fillcolor=lightblue];
+u10 [label="imurdock\nimurdock@edd.com"];
+u9 [label="mbaker\nmbaker@edd.com"];
+u9 -> u2;
+u9 -> u10;
+u9 -> u1;
+u8 [label="ksandler\nksandler@edd.com"];
+u7 [label="jcorbet\njcorbet@edd.com"];
+u6 [label="bfox\nbfox@edd.com"];
+u6 -> u7;
+u6 -> u5;
+u5 [label="smejia\nsmejia@edd.com"];
+u5 -> u2;
+u5 -> u1;
+u4 [label="mshuttleworth\nmshuttleworth@edd.com"];
+u3 [label="gkroah-hartman\ngkroah-hartman@edd.com"];
+u2 [label="mitzep\nmitzep@edd.com"];
+u2 -> u7;
+u2 -> u3;
+u1 [label="lgarcia\nlgarcia@edd.com"];
+u1 -> u4;
+u1 -> u2;
+u0 [label="root\nroot@edd.com"];
+}

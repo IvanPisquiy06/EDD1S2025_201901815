@@ -14,7 +14,8 @@ uses
   ubandeja, urootmenu, uenviar, ucontactos, uagregar, upila, upapelera, ucola,
   uprogramar, uprogramados, uactualizar, ureportes, uarbolavl, uborradores,
   uarbolbst, uarbolb, ufavoritos, ucomunidades, ucrearcomunidad, 
-umensajecomunidad, uvermensajes
+umensajecomunidad, uvermensajes, uhuffman, uhashing, umerkle, uprivados, 
+ublockchain, uLZW, ulogcontrol, ulogvisual
   { you can add units after this };
 
 {$R *.res}
@@ -40,6 +41,8 @@ begin
   Application.CreateForm(TFormCrearComunidad, FormCrearComunidad);
   Application.CreateForm(TFormMensajeComunidad, FormMensajeComunidad);
   Application.CreateForm(TFormVerMensajes, FormVerMensajes);
+  Application.CreateForm(TFormPrivados, FormPrivados);
+  Application.CreateForm(TFormLogVisual, FormLogVisual);
   Application.Run;
 end.
 

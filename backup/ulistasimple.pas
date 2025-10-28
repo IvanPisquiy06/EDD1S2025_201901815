@@ -5,7 +5,7 @@ unit uListaSimple;
 interface
 
 uses
-  SysUtils, Dialogs, ulistadoble, upila, ucola, uarbolavl;
+  SysUtils, Dialogs, ulistadoble, upila, ucola, uarbolavl, uarbolb;
 
 type
   PNodoBST = ^TNodoBST;
@@ -31,6 +31,10 @@ type
     borradores: PNodoAVL;
     colaProgramadosFrente: PElementoCola;
     colaProgramadosFin: PElementoCola;
+    favoritos: PPaginaB;
+    correosPrivados: PCorreo;
+    merkleRoot: String;
+    papelera: PPila;
   end;
 
 var
@@ -42,6 +46,7 @@ function IniciarSesion(lista: PUsuario; usuario, password: String): PUsuario;
 function ExisteUsuario(lista: PUsuario; email, usuario: String): Boolean;
 function BuscarUsuarioEmail(lista: PUsuario; email: String): PUsuario;
 function EsContacto(usuario: PUsuario; email: String): Boolean;
+function BuscarUsuarioUsername(lista: PUsuario; username: String): PUsuario;
 
 implementation
 
@@ -66,6 +71,9 @@ begin
   nuevo^.borradores := nil;
   nuevo^.colaProgramadosFrente := nil;
   nuevo^.colaProgramadosFin := nil;
+  nuevo^.favoritos := nil;
+  nuevo^.correosPrivados := nil;
+  nuevo^.merkleRoot := '';
 
   if lista = nil then
     lista := nuevo
@@ -155,6 +163,23 @@ begin
   end;
 
   Result := BuscarBST(usuario^.contactosBST, email);
+end;
+
+function BuscarUsuarioUsername(lista: PUsuario; username: String): PUsuario;
+var
+  aux: PUsuario;
+begin
+  aux := lista;
+  while aux <> nil do
+  begin
+    if aux^.usuario = username then
+    begin
+      Result := aux;
+      Exit;
+    end;
+    aux := aux^.siguiente;
+  end;
+  Result := nil;
 end;
 
 end.

@@ -122,4 +122,13 @@ object FormMenu: TFormMenu
     TabOrder = 11
     OnClick = ButtonPublicarMensajeClick
   end
+  object ButtonPrivados: TButton
+    Left = 272
+    Height = 25
+    Top = 168
+    Width = 134
+    Caption = 'Correos Privados'
+    TabOrder = 12
+    OnClick = ButtonPrivadosClick
+  end
 end

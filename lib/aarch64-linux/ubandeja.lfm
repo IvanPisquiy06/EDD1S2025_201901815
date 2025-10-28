@@ -68,4 +68,26 @@ object FormBandeja: TFormBandeja
     TabOrder = 4
     OnClick = ButtonFavoritoClick
   end
+  object ButtonDescargar: TButton
+    Left = 264
+    Height = 25
+    Top = 448
+    Width = 75
+    Caption = 'Descargar'
+    TabOrder = 5
+    OnClick = ButtonDescargarClick
+  end
+  object ButtonPrivado: TButton
+    Left = 368
+    Height = 25
+    Top = 448
+    Width = 75
+    Caption = 'Privado'
+    TabOrder = 6
+    OnClick = ButtonPrivadoClick
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 456
+    Top = 384
+  end
 end

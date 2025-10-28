@@ -6,11 +6,13 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  ActnList, ulistadoble, ulistasimple, upila, uarbolb;
+  ActnList, Menus, ulistadoble, ulistasimple, upila, uarbolb, uhuffman;
 
 type
   { TFormBandeja }
   TFormBandeja = class(TForm)
+    ButtonPrivado: TButton;
+    ButtonDescargar: TButton;
     ButtonFavorito: TButton;
     ButtonOrdenar: TButton;
     ButtonEliminar: TButton;
@@ -18,9 +20,12 @@ type
     LabelNoLeidos: TLabel;
     ListBoxCorreos: TListBox;
     MemoMensaje: TMemo;
+    SaveDialog1: TSaveDialog;
+    procedure ButtonDescargarClick(Sender: TObject);
     procedure ButtonFavoritoClick(Sender: TObject);
     procedure ButtonOrdenarClick(Sender: TObject);
     procedure ButtonEliminarClick(Sender: TObject);
+    procedure ButtonPrivadoClick(Sender: TObject);
     procedure ListBoxCorreosClick(Sender: TObject);
   private
     usuarioActual: PUsuario;
@@ -33,6 +38,7 @@ var
   FormBandeja: TFormBandeja;
 
 implementation
+uses uLZW, umerkle;
 
 {$R *.lfm}
 
@@ -63,6 +69,8 @@ end;
 procedure TFormBandeja.ListBoxCorreosClick(Sender: TObject);
 var
   idx: Integer;
+  arbolHuffman: PHuffmanNode;
+  mensajeDescomprimido: String;
 begin
   idx := ListBoxCorreos.ItemIndex;
   if idx < 0 then
@@ -76,7 +84,18 @@ begin
 
   if correoActual <> nil then
   begin
-    MemoMensaje.Text := correoActual^.mensaje;
+    if correoActual^.tablaCodigos <> nil then
+    begin
+      arbolHuffman := ConstruirArbolDesdeTabla(correoActual^.tablaCodigos);
+      mensajeDescomprimido := DescomprimirHuffman(correoActual^.mensaje, arbolHuffman);
+    end
+    else
+    begin
+      mensajeDescomprimido := correoActual^.mensaje;
+    end;
+
+    MemoMensaje.Text := mensajeDescomprimido;
+
     if correoActual^.estado = 'NL' then
     begin
       correoActual^.estado := 'L';
@@ -86,7 +105,6 @@ begin
     end;
   end;
 end;
-
 procedure TFormBandeja.ButtonOrdenarClick(Sender: TObject);
 begin
   ListBoxCorreos.Sorted := not ListBoxCorreos.Sorted;
@@ -104,6 +122,51 @@ begin
   ShowMessage('Correo "' + correoActual^.asunto + '" agregado a favoritos.');
 end;
 
+procedure TFormBandeja.ButtonDescargarClick(Sender: TObject);
+var
+  arbolHuffman: PHuffmanNode;
+  mensajeDescomprimido: String;
+  mensajeComprimidoLZW: String;
+  listaGuardar: TStringList;
+begin
+  if correoActual = nil then
+  begin
+    ShowMessage('Por favor, selecciona un correo de la lista para descargar.');
+    Exit;
+  end;
+
+  if correoActual^.tablaCodigos <> nil then
+  begin
+    arbolHuffman := ConstruirArbolDesdeTabla(correoActual^.tablaCodigos);
+    mensajeDescomprimido := DescomprimirHuffman(correoActual^.mensaje, arbolHuffman);
+  end
+  else
+  begin
+    mensajeDescomprimido := correoActual^.mensaje;
+  end;
+
+  ShowMessage('Comprimiendo mensaje con LZW...');
+  mensajeComprimidoLZW := ComprimirLZW(mensajeDescomprimido);
+
+  SaveDialog1.Title := 'Guardar Mensaje Comprimido (LZW)';
+  SaveDialog1.Filter := 'Archivo de Texto (*.txt)|*.txt';
+  SaveDialog1.FileName := correoActual^.asunto + '_lzw.txt';
+
+  if SaveDialog1.Execute then
+  begin
+    try
+      listaGuardar := TStringList.Create;
+      listaGuardar.Text := mensajeComprimidoLZW;
+      listaGuardar.SaveToFile(SaveDialog1.FileName);
+      listaGuardar.Free;
+      ShowMessage('Mensaje (comprimido con LZW) guardado en ' + SaveDialog1.FileName);
+    except
+      on E: Exception do
+        ShowMessage('Error al guardar el archivo: ' + E.Message);
+    end;
+  end;
+end;
+
 procedure TFormBandeja.ButtonEliminarClick(Sender: TObject);
 begin
   if correoActual = nil then
@@ -116,6 +179,54 @@ begin
   ShowMessage('Correo "' + correoActual^.asunto + '" movido a la papelera.');
 
   CargarBandeja(usuarioActual);
+end;
+
+procedure TFormBandeja.ButtonPrivadoClick(Sender: TObject);
+var
+  mensajeDescomprimido: String;
+  arbolHuffman: PHuffmanNode;
+  arbolTemporal: PMerkleNode;
+begin
+  if correoActual = nil then
+  begin
+    ShowMessage('Por favor, selecciona un correo para mover a privados.');
+    Exit;
+  end;
+
+  if correoActual^.tablaCodigos <> nil then
+  begin
+    arbolHuffman := ConstruirArbolDesdeTabla(correoActual^.tablaCodigos);
+    mensajeDescomprimido := DescomprimirHuffman(correoActual^.mensaje, arbolHuffman);
+  end
+  else
+  begin
+    mensajeDescomprimido := correoActual^.mensaje;
+  end;
+
+  InsertarCorreo(
+    UsuarioActual^.correosPrivados,
+    correoActual^.id,
+    correoActual^.remitente,
+    correoActual^.destinatario,
+    'NL',
+    correoActual^.asunto,
+    correoActual^.fecha,
+    mensajeDescomprimido,
+    True
+  );
+
+  arbolTemporal := CrearMerkleTree(UsuarioActual^.correosPrivados);
+  if arbolTemporal <> nil then
+    UsuarioActual^.merkleRoot := arbolTemporal^.hash
+  else
+    UsuarioActual^.merkleRoot := '';
+  LiberarMerkleTree(arbolTemporal);
+
+  Push(UsuarioActual^.pilaPapelera, correoActual);
+
+  CargarBandeja(usuarioActual);
+
+  ShowMessage('¡Correo movido a Privados y asegurado con Merkle!');
 end;
 
 end.

@@ -1,14 +1,3 @@
 digraph G {
 node [shape=box, style=filled, fillcolor=skyblue];
-"comAnimales" [label="Animales\n9-10-25 13:40:56"];
-"comJuegos" [label="Juegos\n9-10-25 13:41:00"];
-"comSaludos" [label="Saludos\n9-10-25 13:41:04"];
-"comMusica" [label="Musica\n9-10-25 13:41:07"];
-"comPeliculas" [label="Peliculas\n9-10-25 13:41:21"];
-"comSeries" [label="Series\n9-10-25 13:41:10"];
-"comAnimales" -> "comJuegos";
-"comJuegos" -> "comSaludos";
-"comSaludos" -> "comMusica";
-"comSaludos" -> "comSeries";
-"comMusica" -> "comPeliculas";
 }

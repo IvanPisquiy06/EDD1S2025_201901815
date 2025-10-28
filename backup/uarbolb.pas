@@ -21,7 +21,7 @@ type
 procedure InsertarB(var raiz: PPaginaB; correo: PCorreo);
 function BuscarB(raiz: PPaginaB; id: Integer): PCorreo;
 procedure RecorrerB(raiz: PPaginaB; lista: TStrings);
-procedure EliminarB(raiz: PPaginaB; id: Integer);
+procedure EliminarB(var raiz: PPaginaB; id: Integer);
 
 implementation
 

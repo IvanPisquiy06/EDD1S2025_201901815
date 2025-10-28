@@ -1,0 +1,36 @@
+object FormCompartidos: TFormCompartidos
+  Left = -3
+  Height = 384
+  Top = -30
+  Width = 360
+  Caption = 'FormCompartidos'
+  ClientHeight = 384
+  ClientWidth = 360
+  LCLVersion = '3.8.0.0'
+  object ListBoxBloques: TListBox
+    Left = 24
+    Height = 216
+    Top = 56
+    Width = 144
+    ItemHeight = 0
+    TabOrder = 0
+    OnSelectionChange = ListBoxBloquesSelectionChange
+  end
+  object MemoDetalles: TMemo
+    Left = 200
+    Height = 218
+    Top = 56
+    Width = 144
+    Lines.Strings = (
+      'MemoDetalles'
+    )
+    TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 123
+    Height = 19
+    Top = 296
+    Width = 45
+    Caption = 'Label1'
+  end
+end

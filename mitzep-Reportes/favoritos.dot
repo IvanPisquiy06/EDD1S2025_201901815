@@ -1,4 +1,0 @@
-digraph G {
-node [shape=record, style=filled, fillcolor=coral];
-"page264679520911072" [label="<f0>|<d1> ID: 1<f1>|<d2> ID: 2<f2>|<d3> ID: 21|<f3>"];
-}

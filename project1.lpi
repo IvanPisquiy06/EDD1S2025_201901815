@@ -193,12 +193,57 @@
         <Filename Value="umensajecomunidad.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormMensajeComunidad"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
       <Unit>
         <Filename Value="uvermensajes.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FormVerMensajes"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uhuffman.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ugrafos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGrafos"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uhashing.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="umerkle.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="uprivados.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormPrivados"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ublockchain.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulzw.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uLZW"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulogcontrol.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ulogvisual.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormLogVisual"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>

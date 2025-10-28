@@ -273,6 +273,7 @@ procedure EliminarB(var raiz: PPaginaB; id: Integer);
 var
   underflow: Boolean;
 begin
+  underflow := False;
   Quitar(raiz, underflow, id);
   if underflow and (raiz^.contador = 0) then
   begin

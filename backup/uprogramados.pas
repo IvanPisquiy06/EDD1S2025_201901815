@@ -67,9 +67,9 @@ begin
     begin
       destinatario := BuscarUsuarioEmail(listaUsuarios, correo^.destinatario);
       if destinatario <> nil then
-         InsertarCorreo(destinatario^.bandejaEntrada, correo^.id, correo^.remitente,
-                        correo^.estado, correo^.asunto, DateTimeToStr(ahora),
-                        correo^.mensaje, False);
+         InsertarCorreo(destinatario^.bandejaEntrada, correo^.id, correo^.remitente, correo^.destinatario,
+         correo^.estado, correo^.asunto, DateTimeToStr(ahora),
+         correo^.mensaje);
     end;
     aux := usuarioActual^.colaProgramadosFrente;
   end;

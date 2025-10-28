@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ulistasimple, uarbolb, ulistadoble;
+  ulistasimple, uarbolb, ulistadoble, uhuffman;
 
 type
   { TFormFavoritos }
@@ -54,6 +54,8 @@ end;
 procedure TFormFavoritos.ListBoxFavoritosSelectionChange(Sender: TObject; User: boolean);
 var
   correoSeleccionado: PCorreo;
+  arbolHuffman: PHuffmanNode;
+  mensajeDescomprimido: String;
 begin
   if ListBoxFavoritos.ItemIndex < 0 then Exit;
 
@@ -63,7 +65,18 @@ begin
   begin
     LabelDe.Caption := correoSeleccionado^.remitente;
     LabelAsunto.Caption := correoSeleccionado^.asunto;
-    MemoMensaje.Text := correoSeleccionado^.mensaje;
+
+    if correoSeleccionado^.tablaCodigos <> nil then
+    begin
+      arbolHuffman := ConstruirArbolDesdeTabla(correoSeleccionado^.tablaCodigos);
+      mensajeDescomprimido := DescomprimirHuffman(correoSeleccionado^.mensaje, arbolHuffman);
+    end
+    else
+    begin
+      mensajeDescomprimido := correoSeleccionado^.mensaje;
+    end;
+
+    MemoMensaje.Text := mensajeDescomprimido;
   end;
 end;
 

@@ -1,10 +1,10 @@
 object FormEnviar: TFormEnviar
   Left = -3
-  Height = 354
+  Height = 453
   Top = -30
   Width = 374
   Caption = 'FormEnviar'
-  ClientHeight = 354
+  ClientHeight = 453
   ClientWidth = 374
   LCLVersion = '3.8.0.0'
   object Label1: TLabel
@@ -51,7 +51,7 @@ object FormEnviar: TFormEnviar
   end
   object MemoMensaje: TMemo
     Left = 184
-    Height = 130
+    Height = 193
     Top = 184
     Width = 136
     Lines.Strings = (
@@ -60,9 +60,9 @@ object FormEnviar: TFormEnviar
     TabOrder = 2
   end
   object ButtonEnviar: TButton
-    Left = 56
+    Left = 48
     Height = 25
-    Top = 240
+    Top = 312
     Width = 75
     Caption = 'Enviar'
     TabOrder = 3
@@ -71,9 +71,26 @@ object FormEnviar: TFormEnviar
   object ButtonGuardarBorrador: TButton
     Left = 24
     Height = 25
-    Top = 289
+    Top = 352
     Width = 139
     Caption = 'Guardar borrador'
     TabOrder = 4
+    OnClick = ButtonGuardarBorradorClick
+  end
+  object CheckPrivado: TCheckBox
+    Left = 32
+    Height = 25
+    Top = 272
+    Width = 137
+    Caption = 'Enviar como priv'
+    TabOrder = 5
+  end
+  object CheckCompartido: TCheckBox
+    Left = 32
+    Height = 25
+    Top = 232
+    Width = 153
+    Caption = 'Correo compartido'
+    TabOrder = 6
   end
 end

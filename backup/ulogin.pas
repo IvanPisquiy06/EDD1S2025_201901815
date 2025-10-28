@@ -5,7 +5,8 @@ unit ulogin;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple, ucrearusuario, umenu, urootmenu;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ulistasimple, ucrearusuario, umenu, urootmenu,
+  ublockchain, ulogcontrol;
 
 type
 
